@@ -1,14 +1,49 @@
 # E-commerce Architecture Comparison: Entity-based vs Domain-based
 
-This project demonstrates two different architectural approaches for building an e-commerce application:
+This project demonstrates two different architectural approaches for building an e-commerce application using a **monorepo structure** with **pnpm workspaces**.
+
+## 🚀 Quick Start
+
+```bash
+# Install pnpm if not already installed
+npm install -g pnpm
+
+# Install all dependencies
+pnpm install
+
+# Start all applications
+pnpm start:all
+
+# Or start specific architecture
+pnpm start:entity   # Entity-based only
+pnpm start:domain   # Domain-based only
+```
+
+📖 **See [DEVELOPMENT.md](./DEVELOPMENT.md) for comprehensive development guide**
+
+## 🏗️ Monorepo Structure
+
+```
+├── package.json                 # Root workspace configuration
+├── pnpm-workspace.yaml         # pnpm workspace definition
+├── entity-based-ecommerce/     # Entity-based architecture
+│   ├── backend/                 # Express.js API (port 3001)
+│   └── frontend/                # Nuxt.js frontend (port 4001)
+└── domain-based-ecommerce/      # Domain-driven architecture
+    ├── backend/                 # Express.js API (port 3002)
+    └── frontend/                # Nuxt.js frontend (port 4002)
+```
 
 ## 🏢 Entity-based E-commerce
-**Port: 3001 (Backend) | 3000 (Frontend)**
+
+### Ports: 3001 (Backend) | 4001 (Frontend)
 
 ### Architecture Overview
+
 The entity-based approach organizes code around database entities and follows a traditional MVC pattern.
 
 ### Structure
+
 ```
 entity-based-ecommerce/
 ├── backend/
@@ -31,6 +66,7 @@ entity-based-ecommerce/
 ```
 
 ### Characteristics
+
 - ✅ **Simple to understand** - follows familiar REST conventions
 - ✅ **Quick to get started** - straightforward file organization
 - ✅ **Good for CRUD operations** - each entity has its own controller
@@ -40,12 +76,15 @@ entity-based-ecommerce/
 ---
 
 ## 🎯 Domain-based E-commerce (DDD)
-**Port: 3002 (Backend) | 3001 (Frontend)**
+
+### Ports: 3002 (Backend) | 4002 (Frontend)
 
 ### Architecture Overview
+
 The domain-based approach organizes code around business domains and follows Domain-Driven Design principles.
 
 ### Structure
+
 ```
 domain-based-ecommerce/
 ├── backend/
@@ -72,6 +111,7 @@ domain-based-ecommerce/
 ```
 
 ### Characteristics
+
 - ✅ **Better separation of concerns** - each domain is self-contained
 - ✅ **Scalable architecture** - easier to add new domains
 - ✅ **Business-focused** - aligns with business requirements
@@ -84,10 +124,12 @@ domain-based-ecommerce/
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js 18+
 - npm or yarn
 
 ### Entity-based Setup
+
 ```bash
 # Backend
 cd entity-based-ecommerce/backend
@@ -102,6 +144,7 @@ npm run dev
 ```
 
 ### Domain-based Setup
+
 ```bash
 # Backend
 cd domain-based-ecommerce/backend
@@ -133,14 +176,16 @@ npm run dev
 
 ## 🎯 When to Use Which?
 
-### Choose Entity-based when:
+### Choose Entity-based when
+
 - Building a simple CRUD application
 - Small team or solo development
 - Rapid prototyping
 - Limited business complexity
 - Team is new to backend development
 
-### Choose Domain-based when:
+### Choose Domain-based when
+
 - Complex business requirements
 - Large team development
 - Long-term maintainability is important

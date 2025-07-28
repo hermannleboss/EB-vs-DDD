@@ -1,7 +1,8 @@
 {
-  "name": "entity-based-ecommerce-frontend",
+  "name": "entity-frontend",
   "private": true,
   "scripts": {
+    "clean": "rm -rf .nuxt .output dist node_modules/.cache",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",

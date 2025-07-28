@@ -1,0 +1,5 @@
+packages:
+  - 'entity-based-ecommerce/backend'
+  - 'entity-based-ecommerce/frontend'
+  - 'domain-based-ecommerce/backend'
+  - 'domain-based-ecommerce/frontend'

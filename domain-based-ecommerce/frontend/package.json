@@ -1,7 +1,8 @@
 {
-  "name": "domain-based-ecommerce-frontend",
+  "name": "domain-frontend",
   "private": true,
   "scripts": {
+    "clean": "rm -rf .nuxt .output dist node_modules/.cache",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",

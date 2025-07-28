@@ -1,0 +1,53 @@
+{
+  "name": "eb-vs-ddd-monorepo",
+  "version": "1.0.0",
+  "description": "E-commerce architecture comparison: Entity-based vs Domain-driven design approaches",
+  "private": true,
+  "scripts": {
+    "install:all": "pnpm install",
+    "dev": "pnpm --parallel run dev",
+    "build": "pnpm --recursive run build",
+    "clean": "pnpm --recursive run clean",
+    "lint": "pnpm --recursive run lint",
+    "test": "pnpm --recursive run test",
+    "entity:backend:dev": "pnpm --filter entity-backend run dev",
+    "entity:backend:build": "pnpm --filter entity-backend run build",
+    "entity:frontend:dev": "pnpm --filter entity-frontend run dev",
+    "entity:frontend:build": "pnpm --filter entity-frontend run build",
+    "domain:backend:dev": "pnpm --filter domain-backend run dev",
+    "domain:backend:build": "pnpm --filter domain-backend run build", 
+    "domain:frontend:dev": "pnpm --filter domain-frontend run dev",
+    "domain:frontend:build": "pnpm --filter domain-frontend run build",
+    "db:generate": "pnpm --recursive --filter '*backend*' run db:generate",
+    "db:push": "pnpm --recursive --filter '*backend*' run db:push",
+    "db:migrate": "pnpm --recursive --filter '*backend*' run db:migrate",
+    "db:studio:entity": "pnpm --filter entity-backend run db:studio",
+    "db:studio:domain": "pnpm --filter domain-backend run db:studio",
+    "start:entity": "pnpm --parallel --filter 'entity-*' run dev",
+    "start:domain": "pnpm --parallel --filter 'domain-*' run dev",
+    "start:all": "pnpm --parallel run dev"
+  },
+  "keywords": [
+    "monorepo",
+    "ecommerce",
+    "entity-based",
+    "domain-driven-design",
+    "ddd",
+    "nodejs",
+    "typescript",
+    "prisma",
+    "nuxt",
+    "vue"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.15.0"
+}
