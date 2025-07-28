@@ -4,6 +4,8 @@ This project demonstrates two different architectural approaches for building an
 
 ## 🚀 Quick Start
 
+### Option 1: Local Development
+
 ```bash
 # Install pnpm if not already installed
 npm install -g pnpm
@@ -17,6 +19,20 @@ pnpm start:all
 # Or start specific architecture
 pnpm start:entity   # Entity-based only
 pnpm start:domain   # Domain-based only
+```
+
+### Option 2: Docker (Recommended)
+
+```bash
+# Production-like environment
+docker compose up
+
+# Development environment with hot reload
+docker compose -f docker-compose.dev.yml up
+
+# Or using pnpm scripts
+pnpm docker:up          # Production-like
+pnpm docker:dev         # Development
 ```
 
 📖 **See [DEVELOPMENT.md](./DEVELOPMENT.md) for comprehensive development guide**

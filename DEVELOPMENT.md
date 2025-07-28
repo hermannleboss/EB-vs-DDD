@@ -35,7 +35,7 @@ pnpm install
 pnpm install:all
 ```
 
-### 2. Development Commands
+### 2. Development Commands (Local)
 
 #### Start All Applications
 
@@ -48,6 +48,53 @@ pnpm start:entity
 
 # Start only domain-based applications  
 pnpm start:domain
+```
+
+### 3. Docker Commands
+
+#### Production-like Environment
+
+```bash
+# Build all Docker images
+pnpm docker:build
+
+# Start all services
+pnpm docker:up
+
+# Start all services in detached mode (background)
+pnpm docker:up:detached
+
+# Stop all services
+pnpm docker:down
+
+# View logs
+pnpm docker:logs
+
+# Restart all services
+pnpm docker:restart
+```
+
+#### Development Environment (with hot reload)
+
+```bash
+# Build development images
+pnpm docker:dev:build
+
+# Start development environment
+pnpm docker:dev
+
+# Start development environment in detached mode
+pnpm docker:dev:detached
+
+# Stop development environment
+pnpm docker:dev:down
+```
+
+#### Docker Cleanup
+
+```bash
+# Clean up containers, volumes, and images
+pnpm docker:clean
 ```
 
 #### Individual Application Commands
@@ -66,7 +113,7 @@ pnpm domain:backend:dev
 pnpm domain:frontend:dev
 ```
 
-### 3. Database Operations
+### 4. Database Operations
 
 ```bash
 # Generate Prisma clients for all backends
@@ -83,7 +130,7 @@ pnpm db:studio:entity  # Entity-based database
 pnpm db:studio:domain  # Domain-based database
 ```
 
-### 4. Build Commands
+### 5. Build Commands
 
 ```bash
 # Build all applications
@@ -96,7 +143,7 @@ pnpm domain:backend:build
 pnpm domain:frontend:build
 ```
 
-### 5. Utility Commands
+### 6. Utility Commands
 
 ```bash
 # Clean all build artifacts and caches
@@ -137,6 +184,8 @@ pnpm --filter entity-frontend add @nuxtjs/axios
 
 ## Development Workflow
 
+### Local Development
+
 1. **Initial Setup**: Run `pnpm install` to install all dependencies
 2. **Development**: Use `pnpm start:all` or individual package commands
 3. **Testing**: Access applications at their respective ports:
@@ -144,6 +193,14 @@ pnpm --filter entity-frontend add @nuxtjs/axios
    - Entity Frontend: <http://localhost:4001>
    - Domain Backend: <http://localhost:3002>
    - Domain Frontend: <http://localhost:4002>
+
+### Docker Development
+
+1. **Build Images**: `pnpm docker:build` or `pnpm docker:dev:build`
+2. **Start Services**: `pnpm docker:up` or `pnpm docker:dev`
+3. **Access Applications**: Same URLs as local development
+4. **View Logs**: `pnpm docker:logs` to see all service logs
+5. **Stop Services**: `pnpm docker:down` or `pnpm docker:dev:down`
 
 ## Architecture Comparison
 

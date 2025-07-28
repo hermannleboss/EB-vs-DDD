@@ -26,7 +26,18 @@
     "db:studio:domain": "pnpm --filter domain-backend run db:studio",
     "start:entity": "pnpm --parallel --filter 'entity-*' run dev",
     "start:domain": "pnpm --parallel --filter 'domain-*' run dev",
-    "start:all": "pnpm --parallel run dev"
+    "start:all": "pnpm --parallel run dev",
+    "docker:build": "docker compose build",
+    "docker:up": "docker compose up",
+    "docker:up:detached": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "docker:restart": "docker compose restart",
+    "docker:logs": "docker compose logs -f",
+    "docker:dev": "docker compose -f docker-compose.dev.yml up",
+    "docker:dev:detached": "docker compose -f docker-compose.dev.yml up -d",
+    "docker:dev:down": "docker compose -f docker-compose.dev.yml down",
+    "docker:dev:build": "docker compose -f docker-compose.dev.yml build",
+    "docker:clean": "docker compose down -v --rmi all"
   },
   "keywords": [
     "monorepo",
