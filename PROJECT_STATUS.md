@@ -1,14 +1,21 @@
-# Project Setup Complete ✅
+# Monorepo Project Setup Complete ✅
 
-I have successfully created a comprehensive e-commerce project with two different architectural approaches:
+I have successfully created a comprehensive e-commerce project with two different architectural approaches using **pnpm workspaces monorepo** architecture:
 
-## 📁 Project Structure Created
+## 🏗️ Monorepo Structure
 
-```
+```md
 EB-vs-DDD/
+├── package.json                        # Root workspace configuration
+├── pnpm-workspace.yaml                 # pnpm workspace definition
+├── pnpm-lock.yaml                      # Lock file
+├── DEVELOPMENT.md                      # Development guide
+├── scripts/
+│   ├── clean-all.js                    # Cross-platform cleanup script
+│   └── validate-monorepo.js            # Structure validation
 ├── README.md                           # Comprehensive comparison guide
 ├── entity-based-ecommerce/
-│   ├── backend/                        # Entity-based Node.js backend
+│   ├── backend/ (entity-backend)       # Entity-based Node.js backend
 │   │   ├── package.json
 │   │   ├── tsconfig.json
 │   │   ├── .env
@@ -75,7 +82,8 @@ EB-vs-DDD/
 
 ## 🎯 What's Implemented
 
-### Entity-based Backend Features:
+### Entity-based Backend Features
+
 - ✅ Complete Express.js setup with TypeScript
 - ✅ Prisma ORM with SQLite database
 - ✅ User authentication with JWT
@@ -89,7 +97,8 @@ EB-vs-DDD/
 - ✅ Authentication middleware
 - ✅ Comprehensive Prisma schema
 
-### Domain-based Backend Features:
+### Domain-based Backend Features
+
 - ✅ Domain-driven design structure
 - ✅ Separation of concerns with layers:
   - Domain layer (entities, repositories)
@@ -101,7 +110,8 @@ EB-vs-DDD/
   - Application services
   - Clean architecture principles
 
-### Frontend Features (Both):
+### Frontend Features (Both)
+
 - ✅ Nuxt.js 3 setup with TypeScript
 - ✅ Tailwind CSS for styling
 - ✅ Responsive design
@@ -111,7 +121,8 @@ EB-vs-DDD/
 
 ## 🚀 Next Steps
 
-### To run the Entity-based backend:
+### To run the Entity-based backend
+
 ```bash
 cd entity-based-ecommerce/backend
 npm install
@@ -120,7 +131,8 @@ npm run dev
 # Runs on http://localhost:3001
 ```
 
-### To run the Domain-based backend:
+### To run the Domain-based backend
+
 ```bash
 cd domain-based-ecommerce/backend
 npm install
@@ -129,7 +141,8 @@ npm run dev
 # Runs on http://localhost:3002
 ```
 
-### To run the frontends:
+### To run the frontends
+
 ```bash
 # Entity-based frontend
 cd entity-based-ecommerce/frontend
@@ -146,13 +159,15 @@ npm run dev
 
 ## 📚 Key Differences Demonstrated
 
-### Entity-based Approach:
+### Entity-based Approach
+
 - Controllers organized by database entities
 - Simple file structure, easy to understand
 - Good for smaller applications
 - Business logic mixed with data access
 
-### Domain-based Approach:
+### Domain-based Approach
+
 - Code organized by business domains
 - Clean architecture with clear layers
 - Better for complex business requirements

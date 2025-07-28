@@ -102,6 +102,9 @@ pnpm domain:frontend:build
 # Clean all build artifacts and caches
 pnpm clean
 
+# Clean everything including node_modules (nuclear option)
+pnpm clean:all
+
 # Run linting across all packages
 pnpm lint
 
@@ -162,9 +165,8 @@ Use this monorepo to compare, learn, and experiment with both approaches.
 ### Reset Everything
 
 ```bash
-# Clean all caches and rebuild
-pnpm clean
-rm -rf node_modules */*/node_modules
+# Clean all caches and rebuild (cross-platform)
+pnpm clean:all
 pnpm install
 pnpm db:generate
 pnpm db:push

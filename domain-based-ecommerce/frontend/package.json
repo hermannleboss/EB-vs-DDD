@@ -2,7 +2,7 @@
   "name": "domain-frontend",
   "private": true,
   "scripts": {
-    "clean": "rm -rf .nuxt .output dist node_modules/.cache",
+    "clean": "pnpm exec rimraf .nuxt .output dist node_modules/.cache",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
