@@ -1,5 +1,5 @@
 # Domain-based E-commerce Backend (Development)
-FROM node:18-alpine
+FROM node:24-alpine
 
 # Install curl for health checks
 RUN apk add --no-cache curl
@@ -10,20 +10,15 @@ RUN npm install -g pnpm
 # Set working directory
 WORKDIR /app
 
-# Copy root package files for workspace context
-COPY package.json pnpm-workspace.yaml pnpm-lock.yaml ./
-
-# Copy domain backend package files
-COPY domain-based-ecommerce/backend/package.json ./domain-based-ecommerce/backend/
+# Copy package files
+COPY package.json ./
+COPY pnpm-lock.yaml* ./
 
 # Install dependencies
-RUN pnpm install --frozen-lockfile
+RUN pnpm install
 
-# Copy domain backend source code
-COPY domain-based-ecommerce/backend/ ./domain-based-ecommerce/backend/
-
-# Set working directory to the backend
-WORKDIR /app/domain-based-ecommerce/backend
+# Copy source code
+COPY . .
 
 # Generate Prisma client
 RUN pnpm db:generate

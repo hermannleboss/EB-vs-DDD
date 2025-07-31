@@ -1,8 +1,8 @@
 # Entity-based E-commerce Backend (Development)
-FROM node:18-alpine
+FROM node:24-alpine
 
-# Install curl for health checks
-RUN apk add --no-cache curl
+# Install system dependencies
+RUN apk add --no-cache curl python3 make g++ libc6-compat
 
 # Install pnpm
 RUN npm install -g pnpm
@@ -10,20 +10,15 @@ RUN npm install -g pnpm
 # Set working directory
 WORKDIR /app
 
-# Copy root package files for workspace context
-COPY package.json pnpm-workspace.yaml pnpm-lock.yaml ./
-
-# Copy entity backend package files
-COPY entity-based-ecommerce/backend/package.json ./entity-based-ecommerce/backend/
+# Copy package files
+COPY package.json ./
+COPY pnpm-lock.yaml* ./
 
 # Install dependencies
-RUN pnpm install --frozen-lockfile
+RUN pnpm install
 
-# Copy entity backend source code
-COPY entity-based-ecommerce/backend/ ./entity-based-ecommerce/backend/
-
-# Set working directory to the backend
-WORKDIR /app/entity-based-ecommerce/backend
+# Copy source code
+COPY . .
 
 # Generate Prisma client
 RUN pnpm db:generate

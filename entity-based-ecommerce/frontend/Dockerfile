@@ -1,5 +1,5 @@
 # Entity-based E-commerce Frontend
-FROM node:18-alpine
+FROM node:24
 
 # Install pnpm
 RUN npm install -g pnpm
@@ -7,20 +7,15 @@ RUN npm install -g pnpm
 # Set working directory
 WORKDIR /app
 
-# Copy root package files for workspace context
-COPY package.json pnpm-workspace.yaml pnpm-lock.yaml ./
-
-# Copy entity frontend package files
-COPY entity-based-ecommerce/frontend/package.json ./entity-based-ecommerce/frontend/
+# Copy package files
+COPY package.json ./
+COPY pnpm-lock.yaml* ./
 
 # Install dependencies
-RUN pnpm install --frozen-lockfile
+RUN pnpm install
 
-# Copy entity frontend source code
-COPY entity-based-ecommerce/frontend/ ./entity-based-ecommerce/frontend/
-
-# Set working directory to the frontend
-WORKDIR /app/entity-based-ecommerce/frontend
+# Copy source code
+COPY . .
 
 # Build the application
 RUN pnpm build
@@ -30,7 +25,7 @@ EXPOSE 4001
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD curl -f http://localhost:4001 || exit 1
+  CMD wget --no-verbose --tries=1 --spider http://localhost:4001 || exit 1
 
 # Start the application
 CMD ["pnpm", "preview", "--port", "4001", "--host", "0.0.0.0"]

@@ -4,30 +4,27 @@ FROM node:18-alpine
 # Install curl for health checks
 RUN apk add --no-cache curl
 
+# Domain-based E-commerce Frontend (Development)
+FROM node:24-alpine
+
 # Install pnpm
 RUN npm install -g pnpm
 
 # Set working directory
 WORKDIR /app
 
-# Copy root package files for workspace context
-COPY package.json pnpm-workspace.yaml pnpm-lock.yaml ./
-
-# Copy domain frontend package files
-COPY domain-based-ecommerce/frontend/package.json ./domain-based-ecommerce/frontend/
+# Copy package files
+COPY package.json ./
+COPY pnpm-lock.yaml* ./
 
 # Install dependencies
-RUN pnpm install --frozen-lockfile
+RUN pnpm install
 
-# Copy domain frontend source code
-COPY domain-based-ecommerce/frontend/ ./domain-based-ecommerce/frontend/
-
-# Set working directory to the frontend
-WORKDIR /app/domain-based-ecommerce/frontend
+# Copy source code
+COPY . .
 
 # Expose port
 EXPOSE 4002
-EXPOSE 24678
 
-# Start the application in development mode
-CMD ["pnpm", "dev", "--host", "0.0.0.0", "--port", "4002"]
+# Start in development mode
+CMD ["pnpm", "dev", "--port", "4002", "--host", "0.0.0.0"]

@@ -4,8 +4,8 @@ services:
   # Entity-based Architecture
   entity-backend:
     build:
-      context: .
-      dockerfile: entity-based-ecommerce/backend/Dockerfile
+      context: ./entity-based-ecommerce/backend
+      dockerfile: Dockerfile
     container_name: entity-backend
     ports:
       - "3001:3001"
@@ -28,8 +28,8 @@ services:
 
   entity-frontend:
     build:
-      context: .
-      dockerfile: entity-based-ecommerce/frontend/Dockerfile
+      context: ./entity-based-ecommerce/frontend
+      dockerfile: Dockerfile
     container_name: entity-frontend
     ports:
       - "4001:4001"
@@ -51,8 +51,8 @@ services:
   # Domain-based Architecture
   domain-backend:
     build:
-      context: .
-      dockerfile: domain-based-ecommerce/backend/Dockerfile
+      context: ./domain-based-ecommerce/backend
+      dockerfile: Dockerfile
     container_name: domain-backend
     ports:
       - "3002:3002"
@@ -75,8 +75,8 @@ services:
 
   domain-frontend:
     build:
-      context: .
-      dockerfile: domain-based-ecommerce/frontend/Dockerfile
+      context: ./domain-based-ecommerce/frontend
+      dockerfile: Dockerfile
     container_name: domain-frontend
     ports:
       - "4002:4002"
